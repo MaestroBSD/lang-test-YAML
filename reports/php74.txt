@@ -1,0 +1,19 @@
+VERSION_PHP:
+PHP 7.4.33 (cli) (built: Nov  3 2022 17:24:06) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+Test PHP: 
+Starting: 2022-11-12 03:33:12
+i_loop1: 0
+i_loop1: 1
+i_loop1: 2
+i_loop1: 3
+i_loop1: 4
+i_loop1: 5
+i_loop1: 6
+i_loop1: 7
+i_loop1: 8
+i_loop1: 9
+i_counter: 37 
+l_counter: 10240000000 
+End: 2022-11-12 03:36:33

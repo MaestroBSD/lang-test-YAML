@@ -1,5 +1,7 @@
+VERSION_node.js:
+v19.0.1
 Test JS:
-Starting: 2022-11-11T22:44:52.965Z
+Starting: 2022-11-12T03:06:03.268Z
 i_loop1: 0
 i_loop1: 1
 i_loop1: 2
@@ -12,6 +14,5 @@ i_loop1: 8
 i_loop1: 9
 i_counter: 37
 l_counter: 10240000000
-End: 2022-11-11T22:46:45.747Z
+End: 2022-11-12T03:06:21.323Z
 
-v12.22.9
