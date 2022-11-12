@@ -3,11 +3,12 @@ lang:
   type: compiler
 test:
   native:
-    # нужно выставить права на папку reports и файлы в ней в 777
-    access_cmd: chmod -Rf 777 reports
-    run_cmd: node test_js.js
-  docker:
+    run_cmd: nodejs test_js.js # команда запуска скрипта
+  docker: # Запуск всех команд необходимо осуществлять находясь в корне проекта!
    - version: v19.0.1
+     create_cmd: docker run -it --name nodejs -v $(pwd):/home{$USER} -w /home/{$USER} node /bin/bash # создаём Docker контейнер
      image: node
-     #находясь в корне проекта
-     run_command: docker run -it -v $(pwd):/home/{$USER} -w /home/{$USER} node nodejs src/test_js.js > reports/js.txt && nodejs --version >> reports/js.txt
+     container_name: nodejs
+     start_cmd: docker start nodejs # Стартуем контейнер, если он остановлен
+     attach_cmd: docker attach nodejs # Заходим в контейнер 
+     test_cmd: echo "VERSION_node.js:" > reports/node_js.txt ; nodejs -v >> reports/node_js.txt ; nodejs src/test_js.js | tee -a reports/node_js.txt # Версия, тест, вывод в файл

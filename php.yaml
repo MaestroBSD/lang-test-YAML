@@ -3,10 +3,33 @@ lang:
   type: compiler
 test:
   native:
-    #compyle_cmd:
-    run_cmd: php test_php.php
-  docker:
+    run_cmd: php test_php.php # команда запуска скрипта
+  docker: # Запуск всех команд необходимо осуществлять находясь в корне проекта!
    - version: 7.1
+     create_cmd: docker run -it --name php71 -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.1 /bin/bash
      image: php:7.1
-     #находясь в корне проекта
-     run_command: docker run -it -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.1 bash & time php src/test_php.php
+     container_name: php71
+     start_cmd: docker start php71 # Стартуем контейнер, если он остановлен
+     attach_cmd: docker attach php71 # Заходим в контейнер
+     test_cmd: echo "VERSION_PHP:" > reports/php71.txt ; php -v >> reports/php71.txt ; php src/test_php.php | tee -a reports/php71.txt
+   - version: 7.2
+     create_cmd: docker run -it --name php72 -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.2 /bin/bash
+     image: php:7.2
+     container_name: php72
+     start_cmd: docker start php72 # Стартуем контейнер, если он остановлен
+     attach_cmd: docker attach php72 # Заходим в контейнер
+     test_cmd: echo "VERSION_PHP:" > reports/php72.txt ; php -v >> reports/php72.txt ; php src/test_php.php | tee -a reports/php72.txt
+   - version: 7.3
+     create_cmd: docker run -it --name php73 -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.3 /bin/bash
+     image: php:7.3
+     container_name: php73
+     start_cmd: docker start php73 # Стартуем контейнер, если он остановлен
+     attach_cmd: docker attach php73 # Заходим в контейнер
+     test_cmd: echo "VERSION_PHP:" > reports/php73.txt ; php -v >> reports/php73.txt ; php src/test_php.php | tee -a reports/php73.txt
+   - version: 7.4
+     create_cmd: docker run -it --name php74 -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.4 /bin/bash
+     image: php:7.4
+     container_name: php74
+     start_cmd: docker start php74 # Стартуем контейнер, если он остановлен
+     attach_cmd: docker attach php74 # Заходим в контейнер
+     test_cmd: echo "VERSION_PHP:" > reports/php74.txt ; php -v >> reports/php74.txt ; php src/test_php.php | tee -a reports/php74.txt
