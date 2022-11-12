@@ -1,0 +1,12 @@
+lang:
+  name: php
+  type: compiler
+test:
+  native:
+    #compyle_cmd:
+    run_cmd: php test_php.php
+  docker:
+   - version: 7.1
+     image: php:7.1
+     #находясь в корне проекта
+     run_command: docker run -it -v $(pwd):/home/{$USER} -w /home/{$USER} php:7.1 bash & time php src/test_php.php
